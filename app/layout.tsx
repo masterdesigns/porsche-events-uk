@@ -1,14 +1,14 @@
 import type { Metadata } from 'next'
-import { Bebas_Neue, DM_Sans, DM_Mono } from 'next/font/google'
+import { Sora, Inter, DM_Mono } from 'next/font/google'
 import './globals.css'
 
-const bebasNeue = Bebas_Neue({
-  weight: '400',
+const sora = Sora({
+  weight: ['500', '600', '700', '800'],
   subsets: ['latin'],
   variable: '--font-display',
 })
 
-const dmSans = DM_Sans({
+const inter = Inter({
   subsets: ['latin'],
   variable: '--font-body',
 })
@@ -39,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${bebasNeue.variable} ${dmSans.variable} ${dmMono.variable}`}>
+    <html lang="en" className={`${sora.variable} ${inter.variable} ${dmMono.variable}`}>
       <body className="bg-porsche-off-white font-body text-porsche-black min-h-screen">
         {children}
       </body>
