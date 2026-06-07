@@ -8,11 +8,26 @@ export async function POST(req: NextRequest) {
     const {
       title, type, date, time, venue, description, price, capacity,
       organiser_name, organiser_email, club, source_url,
+      what3words, address_line_1, address_line_2, town, county, postcode,
     } = body
 
     // Validate required fields
     if (!title || !type || !date || !venue || !description || !organiser_name || !organiser_email) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
+    }
+
+    // Light what3words validation (optional field): expect three dot-separated words
+    let w3w: string | null = null
+    if (what3words && what3words.trim()) {
+      const cleaned = what3words.trim().replace(/^\/+/, '') // strip leading slashes
+      if (/^[^.\s/]+\.[^.\s/]+\.[^.\s/]+$/.test(cleaned)) {
+        w3w = cleaned
+      } else {
+        return NextResponse.json(
+          { error: 'what3words address must be three words separated by dots, e.g. filled.count.soap' },
+          { status: 400 }
+        )
+      }
     }
 
     const db = supabaseAdmin()
@@ -34,6 +49,12 @@ export async function POST(req: NextRequest) {
         organiser_name,
         organiser_email,
         club: club || null,
+        what3words: w3w,
+        address_line_1: address_line_1 || null,
+        address_line_2: address_line_2 || null,
+        town: town || null,
+        county: county || null,
+        postcode: postcode || null,
         status: 'pending',
         is_scraped: false,
       })
