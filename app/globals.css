@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --red: #CC0000;
+  --red-dark: #990000;
+  --black: #0a0a0a;
+  --off-white: #f5f3ef;
+  --border: #e0ddd6;
+  --mid: #6b6b6b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body), 'DM Sans', sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), 'Bebas Neue', sans-serif;
+}
+
+.font-mono {
+  font-family: var(--font-mono), 'DM Mono', monospace;
+}
+
+/* Event card hover */
+.event-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.event-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+/* Pulse animation for live scrape dots */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.animate-pulse-dot {
+  animation: pulse 2s infinite;
+}
