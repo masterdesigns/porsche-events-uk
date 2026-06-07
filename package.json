@@ -14,7 +14,8 @@
     "react-dom": "^18",
     "@supabase/supabase-js": "^2.43.4",
     "stripe": "^15.7.0",
-    "@stripe/stripe-js": "^3.4.1"
+    "@stripe/stripe-js": "^3.4.1",
+    "@ideal-postcodes/address-finder": "^5.2.14"
   },
   "devDependencies": {
     "typescript": "^5",
