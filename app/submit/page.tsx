@@ -46,7 +46,7 @@ export default function SubmitPage() {
             postcode: '#postcode',
           },
           // Sync the filled DOM values back into React state so they submit
-          onAddressRetrieved: (address: Record<string, string>) => {
+          onAddressRetrieved: (address: Record<string, any>) => {
             setForm(f => ({
               ...f,
               address_line_1: address.line_1 || '',
